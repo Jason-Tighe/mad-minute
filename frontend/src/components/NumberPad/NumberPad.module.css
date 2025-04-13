@@ -1,0 +1,82 @@
+.button {
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  /* Number buttons (0-9, .) */
+  .number {
+    composes: button;
+    background: #f0f0f0;
+    color: #333;
+  }
+  
+  .number:hover {
+    background: #e0e0e0;
+  }
+  
+  /* Operation buttons (+, -, ×, ÷) */
+  .operation {
+    composes: button;
+    background: #f7921e;
+    color: white;
+  }
+  
+  .operation:hover {
+    background: #e6821a;
+  }
+  
+  /* Equals button specifically */
+  .equals {
+    composes: button;
+    background: #4CAF50; 
+    color: white;
+    grid-row: span 2;
+  }
+  
+  .equals:hover {
+    background: #3e8e41;
+  }
+  
+  /* Utility buttons (C, ±) */
+  .utility {
+    composes: button;
+    background: #f44336;
+    color: white;
+  }
+  
+  /* Special styling for backspace */
+  .backspace {
+    composes: button;
+    background: #607d8b; 
+    color: white;
+  }
+
+  .number-pad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    max-width: 300px;
+  }
+  
+  .number-buttons {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: inherit;
+  }
+  
+  .operation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+  }
+  
+  /* Make zero button wider */
+  button[data-key="0"] {
+    grid-column: span 2;
+  }
+  

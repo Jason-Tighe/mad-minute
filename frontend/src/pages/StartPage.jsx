@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import GameBoard from '../components/GameBoard';
+import GameBoard from '../components/GameBoard/GameBoard';
 import ScorePanel from '../components/ScorePanel';
 
 export default function StartPage() {

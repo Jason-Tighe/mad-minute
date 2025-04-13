@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import GameBoard from '../components/GameBoard';
+import GameBoard from '../components/GameBoard/GameBoard';
 import ScorePanel from '../components/ScorePanel';
-import NumberPad from '../components/NumberPad';
+import NumberPad from '../components/NumberPad/NumberPad';
 
 export default function GamePage() {
   const [score, setScore] = useState(0);
@@ -13,7 +13,6 @@ export default function GamePage() {
     // 4. Need a 
   return (
     <div className="game-container">
-      <NumberPad onButtonClick={(number) => console.log(number)} />
       <ScorePanel score={score} />
       <GameBoard onCorrectAnswer={() => setScore(s => s + 1)} />
 
