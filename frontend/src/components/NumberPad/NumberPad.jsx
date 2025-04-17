@@ -1,6 +1,3 @@
-import styles from './NumberPad.module.css';
-
-
 export default function NumberPad({ onButtonPress }) {
     const buttonGroups = {
         numbers: [
@@ -31,14 +28,13 @@ export default function NumberPad({ onButtonPress }) {
       };
 
     return (
-    <div className="number-pad">
+    <div >
       {/* Numbers */}
       <div className="number-buttons">
         {buttonGroups.numbers.map((btn) => (
           <button
             key={btn.key}
             data-key={btn.key}
-            className={styles.button}
             onClick={() => onButtonPress(btn.key)}
             aria-label={`${btn.display} (Press ${btn.key})`}
           >
@@ -53,7 +49,6 @@ export default function NumberPad({ onButtonPress }) {
           <button
             key={op.key}
             data-key={op.key}
-            className={op.display === '=' ? styles.equals : styles.operation}
             onClick={() => onButtonPress(op.key)}
             aria-label={`${op.display} (Press ${op.key})`}
           >
@@ -67,7 +62,6 @@ export default function NumberPad({ onButtonPress }) {
         {buttonGroups.utilities.map((util) => (
           <button
             key={util.key}
-            className={util.display === 'C' ? styles.utility : styles.backspace}
             onClick={() => onButtonPress(util.key)}
             aria-label={`${util.display} (Press ${util.key})`}
           >

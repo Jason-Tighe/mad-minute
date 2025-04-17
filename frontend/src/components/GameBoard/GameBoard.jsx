@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import NumberPad from '../NumberPad/NumberPad';
-import styles from './GameBoard.module.css';
 
 export default function GameBoard({ onCorrectAnswer }) {
   const [input, setInput] = useState('');
@@ -59,11 +58,6 @@ export default function GameBoard({ onCorrectAnswer }) {
     }
   };
 
-  // i need to change this so that the current number is the result of the last operation
-  // and that it's the starting value so the user doesn't need to retype it
-  console.log('currentNumber', currentNumber);
-  console.log('targetNumber', targetNumber);
-  console.log('input', input);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -89,7 +83,9 @@ export default function GameBoard({ onCorrectAnswer }) {
         <div>Current: {currentNumber}</div>
         <div className="input">{input}</div>
       </div>
-      <NumberPad onButtonPress={handleButtonPress} />
+      <div className="buttons">
+        <NumberPad onButtonPress={handleButtonPress} />
+      </div>
     </div>
   );
 }
