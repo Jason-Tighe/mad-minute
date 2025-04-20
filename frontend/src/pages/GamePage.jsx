@@ -12,10 +12,9 @@ export default function GamePage() {
     // 3. Need an input field to enter the answer
     // 4. Need a 
   return (
-    <div className="game-container">
+    <div className="game-container min-h-screen bg-teal-500" >
       <ScorePanel score={score} />
       <GameBoard onCorrectAnswer={() => setScore(s => s + 1)} />
-
     </div>
   );
 }

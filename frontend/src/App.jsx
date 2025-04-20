@@ -24,7 +24,7 @@ export default function App() {
   // The game will keep track of the score
 
   return (
-    <div className="app">
+    <div className="app min-h-screen">
       <header>{NavBar}</header>
       
       <Routes>
