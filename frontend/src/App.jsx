@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <div className="app min-h-screen">
-      <header>{NavBar}</header>
+      <header><NavBar/></header>
       
       <Routes>
         <Route path="/" element={<StartPage />} />

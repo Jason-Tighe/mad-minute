@@ -7,8 +7,6 @@ export default function Settings() {
   
   return (
     <div className="game-container">
-      <ScorePanel score={score + 3000} />
-      <GameBoard onCorrectAnswer={() => setScore(s => s + 1)} />
     </div>
   );
 }
