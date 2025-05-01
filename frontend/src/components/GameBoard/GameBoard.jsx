@@ -108,13 +108,13 @@ export default function GameBoard({ onCorrectAnswer }) {
 
 
   return (
-    <div className="game-board  bg-red-400 w-full h-full flex flex-col items-center justify-center">
+    <div className="game-board p-4 from-teal-400 to-indigo-400 w-full h-full flex flex-col items-center justify-center">
       <div className=" bg-yellow-400">
         <div>Target: {targetNumber}</div>
         {/* <div>Current: {currentNumber}</div> */}
         {/* <div className="input bg-orange-400">{input}</div> */}
       </div>
-      <div className="h-full bg-green-400 flex items-center justify-center p-4">        
+      <div className="h-full from-teal-400 to-indigo-400flex items-center justify-center p-4">        
         <NumberPad onButtonPress={handleButtonPress} currentInput={input} currentNumber={currentNumber}/>
       </div>
     </div>

@@ -1,20 +1,27 @@
 import { useState } from 'react';
 import GameBoard from '../components/GameBoard/GameBoard';
 import ScorePanel from '../components/ScorePanel';
-import NumberPad from '../components/NumberPad/NumberPad';
 
 export default function GamePage() {
-  const [score, setScore] = useState(0);
-  
-  // things to add to this. 
-    // 1. Add a timer to the game
-    // 2. Add a game over screen
-    // 3. Need an input field to enter the answer
-    // 4. Need a 
-  return (
-    <div className="game-container min-h-screen bg-teal-500" >
-      <ScorePanel score={score} />
-      <GameBoard onCorrectAnswer={() => setScore(s => s + 1)} />
-    </div>
-  );
+    const [score, setScore] = useState(0);
+    const [gameActive, setGameActive] = useState(false); // Start inactive
+    const [gameStarted, setGameStarted] = useState(false); // Track first match
+
+    const handleCorrectAnswer = () => {
+        if (!gameStarted) {
+            setGameStarted(true);
+            setGameActive(true);
+        }
+        setScore(s => s + 1);
+    };
+
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-teal-400 to-indigo-400 flex flex-col items-center justify-start pt-8">
+            <ScorePanel score={score} />
+            <GameBoard 
+                onCorrectAnswer={handleCorrectAnswer} 
+                active={gameActive}
+            />
+        </div>
+    );
 }
