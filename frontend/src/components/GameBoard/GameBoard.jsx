@@ -119,7 +119,7 @@ export default function GameBoard({ onCorrectAnswer, score }) {
         </div>
       </div>
       <ScorePanel score={score} />
-      <Timer initialTime={60} onTimeEnd={() => alert('Time is up!')} running={true} resetFlag={false} />
+      <Timer initialTime={60} />
       {/* Game board content */}
       <div className="h-full from-teal-400 to-indigo-400flex items-center justify-center p-4">        
         <NumberPad onButtonPress={handleButtonPress} currentInput={input} currentNumber={currentNumber}/>
