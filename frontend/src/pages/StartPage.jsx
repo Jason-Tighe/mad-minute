@@ -11,7 +11,7 @@ export default function StartPage() {
         <div className="absolute inset-0 pointer-events-none bg-[repeating-linear-gradient(rgba(0,0,0,0.1)_0px_0px,_rgba(0,0,0,0.05)_0px_1px] opacity-30 rounded-xl"></div>
         
         {/* Title display - styled like calculator screen */}
-        <div className="bg-gray-800 rounded-lg border-2 border-amber-300/30 p-4 mb-8 font-mono text-center">
+        <div className="bg-gray-900 rounded-lg border-2 border-amber-300/30 p-4 mb-8 font-mono text-center">
           <h1 className="text-amber-200 text-4xl font-bold mb-2">MAD MINUTE</h1>
           <p className="text-amber-300/80 text-lg">Math Challenge</p>
         </div>
