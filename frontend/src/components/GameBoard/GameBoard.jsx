@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import NumberPad from '../NumberPad/NumberPad';
 import { evaluate } from 'mathjs';
+import Timer from '../Timer/Timer';
+import ScorePanel from '../ScorePanel.jsx';
+// frontend/src/components/ScorePanel.jsx
 
-export default function GameBoard({ onCorrectAnswer }) {
+export default function GameBoard({ onCorrectAnswer, score }) {
   const [input, setInput] = useState('');
   const [currentNumber, setCurrentNumber] = useState(0);
   const [targetNumber, setTargetNumber] = useState(generateRandomNumber());
@@ -109,11 +112,15 @@ export default function GameBoard({ onCorrectAnswer }) {
 
   return (
     <div className="game-board p-4 from-teal-400 to-indigo-400 w-full h-full flex flex-col items-center justify-center">
-      <div className=" bg-yellow-400">
-        <div>Target: {targetNumber}</div>
-        {/* <div>Current: {currentNumber}</div> */}
-        {/* <div className="input bg-orange-400">{input}</div> */}
+      <div className="relative bg-indigo-800/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg border-2 border-amber-300/50 w-72 mb-6">
+        <div className="bg-gray-900 rounded-lg border-2 border-amber-400/40 p-4 font-mono text-amber-200 text-center">
+          <div className="text-amber-300/80 text-sm tracking-wide mb-1">TARGET</div>
+          <div className="text-4xl font-bold tracking-widest">{targetNumber}</div>
+        </div>
       </div>
+      <ScorePanel score={score} />
+      <Timer initialTime={60} onTimeEnd={() => alert('Time is up!')} running={true} resetFlag={false} />
+      {/* Game board content */}
       <div className="h-full from-teal-400 to-indigo-400flex items-center justify-center p-4">        
         <NumberPad onButtonPress={handleButtonPress} currentInput={input} currentNumber={currentNumber}/>
       </div>

@@ -31,7 +31,7 @@ export default function NumberPad({ onButtonPress, currentInput, currentNumber }
   return (
     <div className="relative bg-indigo-900/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg border-2 border-indigo-400/50 overflow-hidden w-72">
       {/* Retro game-style screen */}
-      <div className="mb-4 p-3 bg-gray-800 rounded-lg border-2 border-amber-300/30 font-mono text-2xl text-amber-200 h-16 flex items-center justify-between overflow-x-auto">
+      <div className="mb-4 p-3 bg-gray-900 rounded-lg border-2 border-amber-300/30 font-mono text-2xl text-amber-200 h-16 flex items-center justify-between overflow-x-auto">
       {/* Base number (left-aligned) */}
       <span className="text-amber-300/70">
         {currentNumber}

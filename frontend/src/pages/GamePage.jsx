@@ -17,10 +17,10 @@ export default function GamePage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-teal-400 to-indigo-400 flex flex-col items-center justify-start pt-8">
-            <ScorePanel score={score} />
             <GameBoard 
                 onCorrectAnswer={handleCorrectAnswer} 
                 active={gameActive}
+                score={score}
             />
         </div>
     );
