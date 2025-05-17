@@ -4,7 +4,7 @@ export default function StartPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-indigo-900 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-indigo-700 flex flex-col items-center justify-center p-4">
       {/* Main container with calculator-inspired design */}
       <div className="relative bg-indigo-900/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border-2 border-indigo-400/50 max-w-md w-full">
         {/* Scanlines overlay */}
@@ -28,13 +28,16 @@ export default function StartPage() {
 
         {/* Secondary buttons */}
         <div className="grid grid-cols-3 gap-3">
-          <button className="bg-indigo-200 hover:bg-indigo-100 text-indigo-900 font-bold py-2 rounded-lg transition-all border-b-4 border-indigo-400 active:border-b-0">
+          <button className="bg-indigo-200 hover:bg-indigo-100 text-indigo-900 font-bold py-2 rounded-lg transition-all border-b-4 border-indigo-400 active:border-b-0"
+            onClick={() => navigate('/how-to-play')}>
             How To Play
           </button>
-          <button className="bg-indigo-200 hover:bg-indigo-100 text-indigo-900 font-bold py-2 rounded-lg transition-all border-b-4 border-indigo-400 active:border-b-0">
+          <button className="bg-indigo-200 hover:bg-indigo-100 text-indigo-900 font-bold py-2 rounded-lg transition-all border-b-4 border-indigo-400 active:border-b-0"
+            onClick={() => navigate('/high-scores')}>
             High Scores
           </button>
-          <button className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 rounded-lg transition-all border-b-4 border-rose-700 active:border-b-0">
+          <button className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 rounded-lg transition-all border-b-4 border-rose-700 active:border-b-0"
+            onClick={() => navigate('/settings')}>
             Settings
           </button>
         </div>

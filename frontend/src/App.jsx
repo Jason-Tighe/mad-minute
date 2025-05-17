@@ -4,6 +4,7 @@ import Settings from './pages/Settings'
 import Leaderboard from './pages/Leaderboard'
 import NavBar from './components/NavBar'
 import StartPage from './pages/StartPage'
+import HowTo from './pages/HowToPlay'
 
 export default function App() {
   // game idea is a calculator game where you have to get to the 'answer' as fast as possible
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/game" element={<GamePage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/how-to-play" element={<HowTo />} />
       </Routes>
     </div>
   )
