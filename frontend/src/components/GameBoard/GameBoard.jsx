@@ -60,11 +60,10 @@ export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGame
       
           let expression;
       
+          // Starts with operator: apply to currentNumber
           if (/^[+\-*/]/.test(cleanInput)) {
-            // Starts with operator: apply to currentNumber
             expression = `${currentNumber}${cleanInput}`;
           } else {
-            // Treat as continuation (default to addition)
             expression = `${currentNumber}+${cleanInput}`;
           }
       
@@ -74,7 +73,6 @@ export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGame
           setCurrentNumber(formattedResult);
           setInput('');
       
-          // Use a tolerance check for float equality
           const isCloseEnough = Math.abs(formattedResult - targetNumber) < 0.0001;
       
           if (isCloseEnough) {

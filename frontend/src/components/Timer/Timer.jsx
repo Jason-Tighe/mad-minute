@@ -3,12 +3,10 @@ import { useEffect, useState } from 'react';
 export default function Timer({ initialTime, onTimeEnd, running, resetFlag }) {
   const [timeLeft, setTimeLeft] = useState(initialTime);
 
-  // Full reset when initialTime or resetFlag changes
   useEffect(() => {
     setTimeLeft(initialTime);
   }, [initialTime, resetFlag]);
 
-  // Timer logic
   useEffect(() => {
     if (!running || timeLeft <= 0) return;
   
