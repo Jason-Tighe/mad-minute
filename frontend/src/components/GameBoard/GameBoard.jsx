@@ -5,15 +5,16 @@ import Timer from '../Timer/Timer';
 import ScorePanel from '../ScorePanel.jsx';
 // frontend/src/components/ScorePanel.jsx
 
-export default function GameBoard({ onCorrectAnswer, score }) {
+export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGameOver, onTimeUp, resetFlag }) {
   const [input, setInput] = useState('');
   const [currentNumber, setCurrentNumber] = useState(0);
   const [targetNumber, setTargetNumber] = useState(generateRandomNumber());
+  
 
   function generateRandomNumber() {
     return Math.floor(Math.random() * 100) + 1;
   }
-
+  console.log(isGameOver)
   const handleButtonPress = (key) => {
     switch(key) {
       // Number keys
@@ -50,39 +51,37 @@ export default function GameBoard({ onCorrectAnswer, score }) {
       // Calculate
       case 'Enter':
         try {
-          // Remove all whitespace first
           const cleanInput = input.replace(/\s+/g, '');
-          
-          // If empty input, use currentNumber directly
+      
           if (!cleanInput) {
-            if (currentNumber === targetNumber) {
-              onCorrectAnswer();
-              setTargetNumber(generateRandomNumber());
-            }
+            // If input is empty, don't evaluate — do nothing
             return;
           }
       
-          // Build expression properly
           let expression;
+      
           if (/^[+\-*/]/.test(cleanInput)) {
-            // If input starts with operator, apply to currentNumber
+            // Starts with operator: apply to currentNumber
             expression = `${currentNumber}${cleanInput}`;
           } else {
-            // Otherwise treat as continuation (default to addition)
+            // Treat as continuation (default to addition)
             expression = `${currentNumber}+${cleanInput}`;
           }
       
-          // Safer evaluation using mathjs
           const result = evaluate(expression);
           const formattedResult = parseFloat(result.toFixed(6));
       
           setCurrentNumber(formattedResult);
           setInput('');
       
-          if (formattedResult === targetNumber) {
+          // Use a tolerance check for float equality
+          const isCloseEnough = Math.abs(formattedResult - targetNumber) < 0.0001;
+      
+          if (isCloseEnough) {
             onCorrectAnswer();
             setTargetNumber(generateRandomNumber());
           }
+      
         } catch (error) {
           console.error("Calculation error:", error.message);
           setInput('ERR');
@@ -111,10 +110,14 @@ export default function GameBoard({ onCorrectAnswer, score }) {
 
 
   return (
-    <div className="game-board p-4 my-24 from-teal-400 to-indigo-400 w-full h-full flex flex-row items-center justify-center">
-      {/* Sidebar with target, score, and timer */}
+    <div className="game-board p-4 my-24 bg-transparent w-full h-full flex flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-start space-y-6 mr-6">
-        <Timer initialTime={60} />
+      <Timer
+        initialTime={60}
+        onTimeEnd={onTimeUp}
+        running={isGameActive}
+        resetFlag={resetFlag}
+      />
         <div className="relative bg-indigo-800/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg border-2 border-amber-300/50 w-72">
           <div className="bg-gray-900 rounded-lg border-2 border-amber-400/40 p-4 font-mono text-amber-200 text-center">
             <div className="text-amber-300/80 text-sm tracking-wide mb-1">TARGET</div>
@@ -123,7 +126,6 @@ export default function GameBoard({ onCorrectAnswer, score }) {
         </div>
         <ScorePanel score={score} />
       </div>
-      {/* Game board content */}
       <div className="h-full flex items-center justify-center p-4">
         <NumberPad onButtonPress={handleButtonPress} currentInput={input} currentNumber={currentNumber} />
       </div>

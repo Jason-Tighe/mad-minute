@@ -10,26 +10,22 @@ export default function Timer({ initialTime, onTimeEnd, running, resetFlag }) {
 
   // Timer logic
   useEffect(() => {
-    if (!running) return;
-    if (timeLeft <= 0) {
-      onTimeEnd();
-      return;
-    }
-
+    if (!running || timeLeft <= 0) return;
+  
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         const newTime = prev - 1;
         if (newTime <= 0) {
           clearInterval(timer);
-          onTimeEnd();
+          onTimeEnd?.();
           return 0;
         }
         return newTime;
       });
     }, 1000);
-
+  
     return () => clearInterval(timer);
-  }, [running, timeLeft, onTimeEnd]);
+  }, [running, onTimeEnd]);
 
   return (
     <div className="relative bg-indigo-900/80 backdrop-blur-sm p-3 rounded-2xl shadow-lg border-2 border-indigo-400/50 w-72 mb-4">
