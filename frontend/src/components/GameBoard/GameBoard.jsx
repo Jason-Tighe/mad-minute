@@ -110,21 +110,21 @@ export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGame
   return (
     <div className="game-board p-4 my-24 bg-transparent w-full h-full flex flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-start space-y-6 mr-6">
-      <Timer
-        initialTime={60}
-        onTimeEnd={onTimeUp}
-        running={isGameActive}
-        resetFlag={resetFlag}
-      />
-        <div className="relative bg-indigo-800/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg border-2 border-amber-300/50 w-72">
+        <Timer
+          initialTime={60}
+          onTimeEnd={onTimeUp}
+          running={isGameActive}
+          resetFlag={resetFlag}
+        />
+        <ScorePanel score={score} />
+      </div>
+      <div className="h-full flex flex-col items-center justify-center p-4">
+        <div className="relative bg-indigo-800/80 backdrop-blur-sm p-4 rounded-2xl shadow-lg border-2 border-amber-300/50 w-72 mb-6">
           <div className="bg-gray-900 rounded-lg border-2 border-amber-400/40 p-4 font-mono text-amber-200 text-center">
             <div className="text-amber-300/80 text-sm tracking-wide mb-1">TARGET</div>
             <div className="text-4xl font-bold tracking-widest">{targetNumber}</div>
           </div>
         </div>
-        <ScorePanel score={score} />
-      </div>
-      <div className="h-full flex items-center justify-center p-4">
         <NumberPad onButtonPress={handleButtonPress} currentInput={input} currentNumber={currentNumber} />
       </div>
     </div>
