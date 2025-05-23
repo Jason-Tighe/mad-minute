@@ -27,6 +27,14 @@ export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGame
           return prev + key;
         });
         break;
+      
+      case '.':
+        setInput(prev => {
+          const lastToken = prev.trim().split(/[\s+*/-]/).pop();
+            if (lastToken.includes('.')) return prev;
+            return prev + '.';
+        });
+      break;
         
       // Operations
       case '+': case '-': case '*': case '/':
