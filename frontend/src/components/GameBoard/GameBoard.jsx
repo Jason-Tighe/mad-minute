@@ -62,7 +62,7 @@ export default function GameBoard({ onCorrectAnswer, score, isGameActive, isGame
           const cleanInput = input.replace(/\s+/g, '');
       
           if (!cleanInput) {
-            // If input is empty, don't evaluate — do nothing
+            // If input is empty, do nothing
             return;
           }
       
