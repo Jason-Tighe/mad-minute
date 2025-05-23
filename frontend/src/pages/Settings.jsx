@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import GameBoard from '../components/GameBoard/GameBoard';
 import ScorePanel from '../components/ScorePanel';
 

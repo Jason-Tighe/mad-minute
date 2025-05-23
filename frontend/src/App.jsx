@@ -31,8 +31,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<StartPage />} />
         <Route path="/game" element={<GamePage />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/how-to-play" element={<HowTo />} />
       </Routes>
     </div>
